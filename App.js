@@ -114,7 +114,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <View style={styles.GameName}><Text style={styles.winText}>Tic-Tac-Toe</Text></View>
+      <View style={styles.GameName}><Text style={styles.welcomeText}>Tic-Tac-Toe</Text></View>
         <View style={styles.grid}>
           <View style={styles.row}>
             <View style={styles.item}>
@@ -222,6 +222,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#2F363F",
+  },
+  welcomeText : {
+    fontSize: 40,
+    color: "#FFF",
+    fontWeight: "bold",
   },
   GameName:{
     margin: 20,
