@@ -32,7 +32,7 @@ export default class App extends React.Component {
 
   chooseItemColor = itemNumber => {
     if (itemArray[itemNumber] !== "empty") {
-      return itemArray[itemNumber] ? "red" : "blue";
+      return itemArray[itemNumber] ? "red" : "#6AB04A";
     }
     return "black";
   };
@@ -114,11 +114,19 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <View style={styles.GameName}><Text style={styles.welcomeText}>Tic-Tac-Toe</Text></View>
+        <View style={styles.GameName}>
+          <Text style={styles.welcomeText}>Tic-Tac-Toe</Text>
+        </View>
+        <View style={styles.whoPlaysFirstSection}>
+          <Text style={styles.whoPlaysFirst}>{this.state.isCross ? "Cross" : "Circle"}</Text>
+        </View>
         <View style={styles.grid}>
           <View style={styles.row}>
             <View style={styles.item}>
-              <TouchableOpacity onPress={() => this.drawItem(0)} disable={this.state.winMessage !== ""}>
+              <TouchableOpacity
+                onPress={() => this.drawItem(0)}
+                disable={this.state.winMessage !== ""}
+              >
                 <Entypo
                   name={this.chooseItemIcon(0)}
                   size={50}
@@ -207,7 +215,13 @@ export default class App extends React.Component {
         <View style={styles.winMessage}>
           <Text style={styles.winText}>{this.state.winMessage}</Text>
         </View>
-        <Button full primary rounded style={styles.button} onPress={() => this.resetGame()}>
+        <Button
+          full
+          primary
+          rounded
+          style={styles.button}
+          onPress={() => this.resetGame()}
+        >
           <Text style={styles.buttonText}>Reset</Text>
         </Button>
       </View>
@@ -221,14 +235,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#2F363F",
+    backgroundColor: "#2F363F"
   },
-  welcomeText : {
+  welcomeText: {
     fontSize: 40,
     color: "#FFF",
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
-  GameName:{
+  GameName: {
     margin: 20,
     padding: 25
   },
@@ -240,25 +254,33 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#8B78E6",
     padding: 30,
-    margin:2,
+    margin: 2,
     backgroundColor: "#2C3335"
   },
-  button : {
+  button: {
     padding: 20,
-    margin : 30,
+    margin: 30,
     backgroundColor: "#8B78E6"
   },
-  buttonText:{
+  buttonText: {
     color: "#FFF",
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
-  winText : {
+  winText: {
     color: "#FFF",
     fontWeight: "bold",
-    fontSize: 30,
+    fontSize: 30
   },
   winMessage: {
-    margin:10,
-    padding:10
+    margin: 10,
+    padding: 10
+  },
+  whoPlaysFirst : {
+    fontSize: 20,
+    color: "#FFF"
+  },
+  whoPlaysFirstSection : {
+    padding: 5,
+    margin: 5
   }
 });
